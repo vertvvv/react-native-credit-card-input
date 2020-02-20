@@ -92,6 +92,9 @@ export default class CardView extends Component {
     imageFront: PropTypes.number,
     imageBack: PropTypes.number,
     customIcons: PropTypes.object,
+
+    backgroundImageStyle: PropTypes.object,
+    expiryOnCard: PropTypes.string,
   };
 
   static defaultProps = {
@@ -101,18 +104,23 @@ export default class CardView extends Component {
       name: "FULL NAME",
       expiry: "••/••",
       cvc: "•••",
+      expiryOnCard: 'MONTH/YEAR',
     },
 
     scale: 1,
     fontFamily: Platform.select({ ios: "Courier", android: "monospace" }),
     imageFront: require("../images/card-front.png"),
     imageBack: require("../images/card-back.png"),
+
+    backgroundImageStyle: {},
+    expiryOnCard: "",
   };
 
   render() {
     const { focused,
       brand, name, number, expiry, cvc, customIcons,
-      placeholder, imageFront, imageBack, scale, fontFamily } = this.props;
+      placeholder, imageFront, imageBack, scale, fontFamily,
+      backgroundImageStyle, expiryOnCard } = this.props;
 
     const Icons = { ...defaultIcons, ...customIcons };
     const isAmex = brand === "american-express";
@@ -133,7 +141,9 @@ export default class CardView extends Component {
           perspective={2000}
           clickable={false}
           flip={shouldFlip}>
-          <ImageBackground style={[BASE_SIZE, s.cardFace, transform]}
+          <ImageBackground
+            style={[BASE_SIZE, s.cardFace, transform]}
+            imageStyle={backgroundImageStyle}
             source={imageFront}>
               <Image style={[s.icon]}
                 source={Icons[brand]} />
@@ -145,7 +155,7 @@ export default class CardView extends Component {
                 { !name ? placeholder.name : name.toUpperCase() }
               </Text>
               <Text style={[s.baseText, { fontFamily }, s.expiryLabel, s.placeholder, focused === "expiry" && s.focused]}>
-                MONTH/YEAR
+                { !expiryOnCard ? placeholder.expiryOnCard : expiryOnCard }
               </Text>
               <Text style={[s.baseText, { fontFamily }, s.expiry, !expiry && s.placeholder, focused === "expiry" && s.focused]}>
                 { !expiry ? placeholder.expiry : expiry }

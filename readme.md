@@ -120,6 +120,8 @@ LiteCreditCardInput does not support `requiresName`, `requiresCVC`, and `require
 |allowScroll | PropTypes.bool | enables horizontal scrolling on CreditCardInput <br/> Defaults to `false` |
 |cardBrandIcons | PropTypes.object | brand icons for CardView. see `./src/Icons.js` for details |
 | additionalInputsProps | PropTypes.objectOf(TextInput.propTypes) | An object with Each key of the object corresponding to the name of the field. Allows you to change all props documented in [RN TextInput](https://facebook.github.io/react-native/docs/textinput.html).
+| backgroundImageStyle | ImageBackground.propTypes.imageStyle | Image style of card image background |
+| expiryOnCard | PropTypes.string | Placeholder over MM/YY on card. Defaults to: "MONTH/YEAR"
 
 ##CardView
 
