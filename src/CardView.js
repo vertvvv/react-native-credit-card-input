@@ -165,7 +165,9 @@ export default class CardView extends Component {
                     { !cvc ? placeholder.cvc : cvc }
                   </Text> }
           </ImageBackground>
-          <ImageBackground style={[BASE_SIZE, s.cardFace, transform]}
+          <ImageBackground
+            style={[BASE_SIZE, s.cardFace, transform]}
+            imageStyle={backgroundImageStyle}
             source={imageBack}>
               <Text style={[s.baseText, s.cvc, !cvc && s.placeholder, focused === "cvc" && s.focused]}>
                 { !cvc ? placeholder.cvc : cvc }
