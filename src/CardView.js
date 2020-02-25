@@ -95,6 +95,7 @@ export default class CardView extends Component {
 
     backgroundImageStyle: PropTypes.object,
     expiryOnCard: PropTypes.string,
+    nameOnCard: PropTypes.string,
   };
 
   static defaultProps = {
@@ -114,13 +115,14 @@ export default class CardView extends Component {
 
     backgroundImageStyle: {},
     expiryOnCard: "",
+    nameOnCard: "",
   };
 
   render() {
     const { focused,
       brand, name, number, expiry, cvc, customIcons,
       placeholder, imageFront, imageBack, scale, fontFamily,
-      backgroundImageStyle, expiryOnCard } = this.props;
+      backgroundImageStyle, expiryOnCard, nameOnCard } = this.props;
 
     const Icons = { ...defaultIcons, ...customIcons };
     const isAmex = brand === "american-express";
@@ -152,7 +154,7 @@ export default class CardView extends Component {
               </Text>
               <Text style={[s.baseText, { fontFamily }, s.name, !name && s.placeholder, focused === "name" && s.focused]}
                 numberOfLines={1}>
-                { !name ? placeholder.name : name.toUpperCase() }
+                { !name ? nameOnCard || placeholder.name : name.toUpperCase() }
               </Text>
               <Text style={[s.baseText, { fontFamily }, s.expiryLabel, s.placeholder, focused === "expiry" && s.focused]}>
                 { !expiryOnCard ? placeholder.expiryOnCard : expiryOnCard }

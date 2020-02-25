@@ -68,6 +68,7 @@ export default class CreditCardInput extends Component {
 
     expiryOnCard: PropTypes.string,
     backgroundImageStyle: PropTypes.object,
+    nameOnCard: PropTypes.string,
   };
 
   static defaultProps = {
@@ -97,6 +98,7 @@ export default class CreditCardInput extends Component {
     additionalInputsProps: {},
     expiryOnCard: '',
     backgroundImageStyle: {},
+    nameOnCard: '',
   };
 
   componentDidMount = () => this._focus(this.props.focused);
@@ -150,7 +152,7 @@ export default class CreditCardInput extends Component {
       values: { number, expiry, cvc, name, type }, focused,
       allowScroll, requiresName, requiresCVC, requiresPostalCode,
       cardScale, cardFontFamily, cardBrandIcons,
-      expiryOnCard, backgroundImageStyle,
+      expiryOnCard, backgroundImageStyle, nameOnCard,
     } = this.props;
 
     return (
