@@ -168,6 +168,7 @@ export default class CreditCardInput extends Component {
           number={number}
           expiry={expiry}
           expiryOnCard={expiryOnCard}
+          nameOnCard={nameOnCard}
           backgroundImageStyle={backgroundImageStyle}
           cvc={cvc} />
         <ScrollView ref="Form"
